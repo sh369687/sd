@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Hacked</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: blink 1s infinite;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Device Has Been Hacked!</h1>
+    <p>IP Address: 192.168.1.1</p>
+    <p>Location: Tracing...</p>
+    <p>All system files have been encrypted.</p>
+    <p>To recover your files, you must contact support immediately!</p>
+    <div id="countdown">Time left: 10:00</div>
+
+    <script>
+        // Countdown timer
+        let timeLeft = 600;
+        const countdownElement = document.getElementById('countdown');
+
+        const countdownTimer = setInterval(() => {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            countdownElement.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(countdownTimer);
+                countdownElement.textContent = 'Time is up!';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
